@@ -21,7 +21,16 @@
     "lib": [
       "ES2022",
       "dom"
-    ]
+    ],
+    "baseUrl": "./",
+    "paths": {
+      "@nebular/*": [
+        "node_modules/@nebular/*"
+      ],
+      "bootstrap": [
+        "node_modules/bootstrap/dist/css/bootstrap.min.css"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

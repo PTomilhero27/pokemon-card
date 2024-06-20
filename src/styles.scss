@@ -1,1 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Importação do tema Nebular */
+@import "../node_modules/@nebular/theme/styles/prebuilt/default.css";
+
+/* Importação do Bootstrap */
+@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
