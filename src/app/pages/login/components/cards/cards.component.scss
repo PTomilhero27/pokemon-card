@@ -1,0 +1,110 @@
+.h-100 {
+  height: 100vh;
+}
+
+.w-100 {
+  width: 100vw;
+}
+
+.bg-danger {
+  background-color: #ff4d4d !important;
+  min-height: 90vh;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.bg-primary {
+  background-color: #007bff !important;
+  min-height: 90vh;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.bg-ground {
+  background-color: #228B22 !important;
+  min-height: 90vh;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.bg-ray {
+  background-color: #FFD700 !important;
+  min-height: 90vh;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.pokemon-animation {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  border-radius: 100%;
+}
+
+.pokemon-photo {
+  position: absolute;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  width: 150px;
+}
+
+.card-info .stage {
+  width: 70px;
+  position: relative;
+  img {
+    width: 50px;
+    height: 45px;
+    border-radius: 100%;
+    padding: 5px;
+  }
+
+  span {
+    font-weight: bold;
+    font-size: 0.8rem;
+    margin-right: 5px;
+  }
+
+  .evolve {
+    width: 197px;
+    display: flex;
+    top: 50%;
+    position: absolute;
+    left: 85%;
+    font-size: 10px;
+  }
+}
+
+.card-info span {
+  font-size: 10px;
+}
+
+.sparkles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.sparkle {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 0 10px white, 0 0 20px white;
+  opacity: 0;
+}

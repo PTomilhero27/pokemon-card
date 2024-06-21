@@ -1,0 +1,37 @@
+<div class="h-100 w-100 position-relative" [ngClass]="selectedPokemon.backgroundColor">
+  <div class="pokemon-card p-3">
+    <div class="pokemon-animation" [ngStyle]="{'background-image': 'url(' + selectedPokemon.gif + ')'}"></div>
+    <img [src]="selectedPokemon.photo" alt="{{ selectedPokemon.name }}" class="pokemon-photo"
+      [ngStyle]="{'width': selectedPokemon.id === 0 ? '200px' : '150px'}">
+    <div class="card-info">
+      <div class="d-flex justify-content-between align-items-center text-center">
+        <div class="d-flex">
+          <div class="stage">
+            <span class="stage-text">STAGE {{ selectedPokemon.stage }}</span>
+            <div>
+              <img class="evolution-img" *ngIf="selectedPokemon.id === 0" src="../../../assets/charmeleon.png"
+                alt="Charmeleon">
+              <img class="evolution-img" *ngIf="selectedPokemon.id === 1" src="../../../assets/wartortle.png"
+                alt="Wartortle">
+              <img class="evolution-img" *ngIf="selectedPokemon.id === 2" src="../../../assets/ivisaur.png"
+                alt="Ivysaur">
+              <img class="evolution-img" *ngIf="selectedPokemon.id === 3" src="../../../assets/pichu.png" alt="Ivysaur">
+              <span class="evolve">
+                {{ selectedPokemon.id === 0 ? 'evolui a partir do Charmeleon' :
+                selectedPokemon.id === 1 ? 'evolui a partir do Wartortle' :
+                selectedPokemon.id === 2 ? 'evolui a partir do Ivysaur' :
+                'evolui a partir do Pichu' }}
+              </span>
+            </div>
+          </div>
+          <h2>{{ selectedPokemon.name }}</h2>
+        </div>
+        <span class="fw-bold align-items-center gap-2 d-flex">
+          HP:
+          <p class="fs-6 m-0">{{ selectedPokemon.name === 'Charizard GX' ? '250' : '240' }}</p>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="sparkles"></div>
+</div>

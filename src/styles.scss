@@ -1,7 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
 
-/* Importação do tema Nebular */
-@import "../node_modules/@nebular/theme/styles/prebuilt/default.css";
+.p-button {
+  height: 35px;
+  line-height: 1.5;
+  font-size: 0.875rem; /* Ajuste o tamanho da fonte, se necessário */
+}
 
-/* Importação do Bootstrap */
-@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+
+
+::ng-deep .p-toast-message-content {
+  padding: 0.5rem 1rem !important;
+  font-size: 0.875rem !important;
+  align-items: center;
+
+  svg {
+  width: 1.3rem !important;
+  height: 1.3rem !important;
+  }
+
+  button svg {
+    width: 1rem !important;
+    height: 1rem !important;
+  }
+
+  .p-toast-detail {
+    margin-top: 0;
+  }
+}
