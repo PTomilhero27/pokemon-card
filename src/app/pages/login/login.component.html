@@ -1,0 +1,31 @@
+<div class="d-flex justify-content-center align-items-center min-vh-100">
+  <div class="row w-100 px-5 d-flex justify-content-center">
+    <div class="col-md-5 position-relative overflow-hidden">
+      <app-cards></app-cards>
+    </div>
+    <div class="col-md-6 d-flex justify-content-center align-items-center">
+      <div class="card p-4 shadow-sm" style="width: 400px;">
+        <h3 class="card-title text-center">Login</h3>
+        <p class="text-center">Acesse sua conta para explorar e gerenciar seus cards de Pokémon.</p>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input formControlName="email" type="email" class="form-control" id="email" placeholder="m@example.com">
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Senha</label>
+            <input formControlName="password" type="password" class="form-control" id="password">
+          </div>
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <a href="#">Esqueceu a senha?</a>
+          </div>
+          <button type="submit" pButton label="Entrar" class="p-button-success w-100"
+            [disabled]="!loginForm.valid"></button>
+          <div class="text-center mt-3">
+            <p>Não tem uma conta? <a href="#">Cadastre-se</a></p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
