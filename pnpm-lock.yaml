@@ -53,6 +53,9 @@ importers:
       gsap:
         specifier: ^3.12.5
         version: 3.12.5
+      lucide-angular:
+        specifier: ^0.396.0
+        version: 0.396.0(@angular/common@17.3.11(@angular/core@17.3.11(rxjs@7.8.1)(zone.js@0.14.7))(rxjs@7.8.1))(@angular/core@17.3.11(rxjs@7.8.1)(zone.js@0.14.7))
       primeicons:
         specifier: ^7.0.0
         version: 7.0.0
@@ -2763,6 +2766,12 @@ packages:
   lru-cache@6.0.0:
     resolution: {integrity: sha512-Jo6dJ04CmSjuznwJSS3pUeWmd/H0ffTlkXXgwZi+eq1UCmqQwCh+eLsYOYCwY991i2Fah4h1BEMCx4qThGbsiA==}
     engines: {node: '>=10'}
+
+  lucide-angular@0.396.0:
+    resolution: {integrity: sha512-xMrbNA69wr3FKQV2ieAn6q1f1DsZNc1toJSV953ZeAms/HRiSaAyCxHlHZv0GAockJbi6HcBr6gqgLivggYIqA==}
+    peerDependencies:
+      '@angular/common': 13.x - 18.x
+      '@angular/core': 13.x - 18.x
 
   magic-string@0.30.8:
     resolution: {integrity: sha512-ISQTe55T2ao7XtlAStud6qwYPZjE4GK1S/BeVPus4jrq6JuOnQ00YKQC581RWhR122W7msZV263KzVeLoqidyQ==}
@@ -7041,6 +7050,12 @@ snapshots:
   lru-cache@6.0.0:
     dependencies:
       yallist: 4.0.0
+
+  lucide-angular@0.396.0(@angular/common@17.3.11(@angular/core@17.3.11(rxjs@7.8.1)(zone.js@0.14.7))(rxjs@7.8.1))(@angular/core@17.3.11(rxjs@7.8.1)(zone.js@0.14.7)):
+    dependencies:
+      '@angular/common': 17.3.11(@angular/core@17.3.11(rxjs@7.8.1)(zone.js@0.14.7))(rxjs@7.8.1)
+      '@angular/core': 17.3.11(rxjs@7.8.1)(zone.js@0.14.7)
+      tslib: 2.6.3
 
   magic-string@0.30.8:
     dependencies:
