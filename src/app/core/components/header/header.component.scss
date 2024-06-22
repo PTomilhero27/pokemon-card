@@ -1,0 +1,46 @@
+.navbar {
+  margin-bottom: 20px;
+}
+
+
+
+::ng-deep .custom-dialog .p-menu-list {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+::ng-deep .custom-dialog .p-menuitem {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+::ng-deep .custom-dialog .p-menuitem-link {
+  padding: 10px 15px !important;
+  color: var(--text-color);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+::ng-deep .custom-dialog .p-menuitem-icon {
+  color: var(--text-color);
+  margin-right: 0.5rem;
+}
+
+::ng-deep .custom-dialog .p-menuitem-link:hover {
+  text-decoration: none;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.mr-2 {
+  margin-right: 0.5rem;
+}
+
+.icon-black {
+  svg {
+    stroke: black !important;
+  }
+}

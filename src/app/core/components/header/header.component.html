@@ -1,0 +1,37 @@
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <div class="w-25 h-25">
+      <img class="w-25 h-25" src="../../../../assets/logo.png" alt="pokemon logo">
+    </div>
+
+    <div class="d-flex gap-4 align-items-center">
+      <div>
+
+        <lucide-icon *ngIf="currentTheme === 'dark'" color="white" (click)="menus.toggle($event)" class="cursor-pointer"
+          name="moon" [size]="24"></lucide-icon>
+
+        <lucide-icon *ngIf="currentTheme === 'light'" color="black" (click)="menus.toggle($event)"
+          class="cursor-pointer" name="sun" [size]="24"></lucide-icon>
+
+
+        <p-menu #menus [popup]="true" [model]="theme" styleClass="custom-dialog">
+          <ng-template let-item pTemplate="item">
+            <a class="p-menuitem-link" (click)="item.command($event)">
+              <lucide-icon color="black" *ngIf="item.label === 'Escuro'" name="moon" [size]="18"
+                class="p-menuitem-icon "></lucide-icon>
+              <lucide-icon color="black" *ngIf="item.label === 'Claro'" name="sun" [size]="18"
+                class="p-menuitem-icon"></lucide-icon>
+              <span class="text-black">{{ item.label }}</span>
+            </a>
+          </ng-template>
+        </p-menu>
+      </div>
+
+      <div>
+        <p-menu #menu [model]="items" [popup]="true" styleClass="custom-dialog"></p-menu>
+        <p-avatar (click)="menu.toggle($event)" class="cursor-pointer p-0"
+          image="https://avatars.githubusercontent.com/u/70902978?v=4" styleClass="mr-2" size="normal" shape="circle" />
+      </div>
+    </div>
+  </div>
+</nav>

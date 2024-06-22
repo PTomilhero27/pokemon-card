@@ -8,6 +8,12 @@ import { ButtonModule } from 'primeng/button';
 import { ToastModule } from 'primeng/toast';
 import { RippleModule } from 'primeng/ripple';
 import { MessageService } from 'primeng/api';
+import { LUCIDE_ICONS, LucideAngularModule, LucideIconProvider, Moon, Sun } from 'lucide-angular';
+import { MyIcon } from './utils/my-icon';
+
+const myIcons = {
+  [MyIcon.name]: MyIcon.data
+};
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -22,8 +28,15 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom(
       ButtonModule,
       ToastModule,
-      RippleModule
+      RippleModule,
+      LucideAngularModule.pick({Sun, Moon})
     ),
-    MessageService
+    MessageService,
+    {
+      provide: LUCIDE_ICONS,
+      multi: true,
+      useValue: new LucideIconProvider(myIcons)
+    },
+
   ],
 };

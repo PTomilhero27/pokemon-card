@@ -7,6 +7,7 @@ import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
 import { ToastModule } from 'primeng/toast';
 import { CardsComponent } from './components/cards/cards.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -26,26 +27,21 @@ import { CardsComponent } from './components/cards/cards.component';
 export class LoginComponent implements OnInit {
  loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private messageService: MessageService) {
+  constructor(private fb: FormBuilder, private messageService: MessageService, private router: Router) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     });
   }
 
-  ngOnInit() {
-    const timeline = gsap.timeline();
-    timeline
-      .to('.fire-animation', { duration: 2, width: '200%', height: '200%', opacity: 1 })
-      .to('.charizard', { duration: 1.5, opacity: 1, scale: 3.2 }, '-=1.5')
-      .to('.fire-animation', { duration: 1, opacity: 0 }); // Adiciona a animação de desaparecimento do fogo
-  }
+  ngOnInit() { }
 
   onSubmit() {
     if (this.loginForm.valid) {
       const { email, password } = this.loginForm.value;
       if (email === 'l5network@l5network.com' && password == '12345') {
         this.messageService.add({ severity: 'success', detail: 'Logado com sucesso' });
+        this.router.navigate(['/home']);
       } else {
         this.messageService.add({ severity: 'error', detail: 'Email e/ou senha incorretos' });
       }
