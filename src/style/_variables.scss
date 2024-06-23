@@ -7,7 +7,7 @@ $light-text-color: #000000;
 $light-input-background-color: #F0F0F0;
 $light-input-text-color: #000000;
 $light-button-background-color: #FF0000;
-$light-button-text-color: #FFFFFF;
+$light-button-text-color: #000000;
 
 // Definição das variáveis de tema escuro
 $dark-primary-color: #8B0000; 
@@ -79,6 +79,13 @@ input, textarea {
 }
 
 button {
-  background-color: var(--button-background-color);
-  color: var(--button-text-color);
+    border: none;
+    outline: none;
+    color: inherit;
+    display: flex;
+
+    &:focus {
+      outline: none;
+      box-shadow: none;
+    }
 }

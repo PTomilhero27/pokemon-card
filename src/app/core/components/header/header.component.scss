@@ -1,11 +1,8 @@
 .navbar {
-  margin-bottom: 20px;
-}
-
-.cursor-pointer {
-  cursor: pointer;
-}
-
-.mr-2 {
-  margin-right: 0.5rem;
+  position: fixed;
+  top: 0;
+  left: 0;  
+  right: 0;
+  z-index: 1030;
+  background-color: var(--background-color);
 }
