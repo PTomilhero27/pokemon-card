@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, Renderer2 } from '@angular/core';
+import { Component, OnInit, Renderer2, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { gsap } from 'gsap';
 
 interface Pokemon {
@@ -56,13 +57,15 @@ export class CardsComponent implements OnInit {
 
   selectedPokemon: Pokemon;
 
-  constructor(private renderer: Renderer2) {
+  constructor(private renderer: Renderer2, @Inject(PLATFORM_ID) private platformId: Object) {
     this.selectedPokemon = this.selectPokemon();
   }
 
   ngOnInit() {
-    this.createSparkles();
-    this.animateEntrance();
+    if (isPlatformBrowser(this.platformId)) {
+      this.createSparkles();
+      this.animateEntrance();
+    }
   }
 
   selectPokemon(): Pokemon {
@@ -71,7 +74,7 @@ export class CardsComponent implements OnInit {
   }
 
   createSparkles() {
-    const container = document.querySelector('.sparkles');
+    const container = this.renderer.selectRootElement('.sparkles', true);
     for (let i = 0; i < 100; i++) {
       const sparkle = this.renderer.createElement('div');
       this.renderer.addClass(sparkle, 'sparkle');
