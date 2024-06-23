@@ -8,6 +8,7 @@ import { LucideAngularModule } from 'lucide-angular';
 import { CommonModule } from '@angular/common';
 import { ThemeService } from '../../service/theme.service';
 import { DefaultTheme, ThemeProps } from 'src/app/models/theme';
+import { SidebarComponent } from '../sidebar/sidebar.component';
 
 @Component({
   selector: 'app-header',
@@ -17,7 +18,8 @@ import { DefaultTheme, ThemeProps } from 'src/app/models/theme';
     AvatarModule,
     MenuModule,
     LucideAngularModule,
-    CommonModule
+    CommonModule,
+    SidebarComponent
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
