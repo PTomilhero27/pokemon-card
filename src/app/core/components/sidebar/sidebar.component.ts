@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { LucideAngularModule } from 'lucide-angular';
@@ -18,9 +18,11 @@ import { gsap } from 'gsap';
   styleUrls: ['./sidebar.component.scss']
 })
   
-export class SidebarComponent implements OnInit, AfterViewInit {
+export class SidebarComponent implements OnInit {
   @Input() currentTheme: string = '';
+  @Input() showSideBarOnMobile: boolean = false;
   public selectedButton: string = '';
+  public windowWidth: number = window.innerWidth;
   private backgroundElement: HTMLElement | null = null;
 
   public items = [
@@ -31,11 +33,24 @@ export class SidebarComponent implements OnInit, AfterViewInit {
 
   constructor(private el: ElementRef) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.updateWindowWidth();
+  }
 
   ngAfterViewInit() {
     this.backgroundElement = this.el.nativeElement.querySelector('.background');
-    this.moveBackground(this.selectedButton);
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: Event) {
+    this.updateWindowWidth();
+  }
+
+  updateWindowWidth() {
+    this.windowWidth = window.innerWidth;
+    if (this.windowWidth > 576) {
+      this.showSideBarOnMobile = false;
+    }
   }
 
   selectButton(buttonLabel: string) {
@@ -56,5 +71,9 @@ export class SidebarComponent implements OnInit, AfterViewInit {
         ease: "power2.inOut"
       });
     }
+  }
+
+  toggleSidebar() {
+    this.showSideBarOnMobile = !this.showSideBarOnMobile;
   }
 }
