@@ -1,13 +1,8 @@
 .navbar {
   position: fixed;
   top: 0;
-  left: 0; // Adjust based on the width of the sidebar
+  left: 0;  
   right: 0;
   z-index: 1030;
-  background-color: var(--background-color) ;
-  box-shadow: 0 2px 5px var(--shadow-color);
-}
-
-.cursor-pointer {
-  cursor: pointer;
+  background-color: var(--background-color);
 }
