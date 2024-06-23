@@ -1,20 +1,32 @@
 .navbar {
-  margin-bottom: 20px;
+  position: fixed;
+  top: 0;
+  left: 0; // Adjust based on the width of the sidebar
+  right: 0;
+  z-index: 1030;
+  background-color: var(--background-color) ;
+  box-shadow: 0 2px 5px var(--shadow-color);
 }
 
 
+@media (max-width: 768px) {
+  .navbar {
+    left: 0;
+  }
+}
 
-::ng-deep .custom-dialog .p-menu-list {
+
+.custom-dialog .p-menu-list {
   padding: 0 !important;
   margin: 0 !important;
 }
 
-::ng-deep .custom-dialog .p-menuitem {
+.custom-dialog .p-menuitem {
   padding: 0 !important;
   margin: 0 !important;
 }
 
-::ng-deep .custom-dialog .p-menuitem-link {
+.custom-dialog .p-menuitem-link {
   padding: 10px 15px !important;
   color: var(--text-color);
   text-decoration: none;
@@ -22,25 +34,15 @@
   align-items: center;
 }
 
-::ng-deep .custom-dialog .p-menuitem-icon {
+.custom-dialog .p-menuitem-icon {
   color: var(--text-color);
   margin-right: 0.5rem;
 }
 
-::ng-deep .custom-dialog .p-menuitem-link:hover {
+.custom-dialog .p-menuitem-link:hover {
   text-decoration: none;
 }
 
 .cursor-pointer {
   cursor: pointer;
-}
-
-.mr-2 {
-  margin-right: 0.5rem;
-}
-
-.icon-black {
-  svg {
-    stroke: black !important;
-  }
 }

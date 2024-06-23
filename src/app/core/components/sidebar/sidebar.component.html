@@ -1,1 +1,11 @@
-<p>sidebar works!</p>
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="logo">
+      <img class="w-100 h-100" src="../../../../assets/logo.png" alt="pokemon logo">
+    </div>
+    <button class="menu-toggle">
+      <i lucideIcon="Menu"></i>
+    </button>
+  </div>
+  <p-menu [model]="items" [style]="{'width':'100%'}"></p-menu>
+</div>
