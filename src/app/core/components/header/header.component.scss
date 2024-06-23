@@ -6,3 +6,21 @@
   z-index: 1030;
   background-color: var(--background-color);
 }
+
+.header-content {
+  width: 100%;
+  justify-content: end;
+
+  @media (max-width: 576px) {
+    justify-content: space-between;
+  }
+}
+
+.hamburger-menu {
+  display: none;
+  cursor: pointer;
+
+  @media (max-width: 576px) {
+    display: block;
+  }
+}

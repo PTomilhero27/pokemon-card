@@ -29,7 +29,7 @@ export class HeaderComponent implements OnInit {
   public items: MenuItem[] | undefined;
   public theme: MenuItem[] | undefined;
   public currentTheme: ThemeProps = DefaultTheme;
-
+  public showSideBarOnMobile: boolean = false;
 
   constructor(private router: Router, private themeService: ThemeService) {}
 
@@ -78,6 +78,10 @@ export class HeaderComponent implements OnInit {
     this.themeService.theme$.subscribe(theme => {
       this.currentTheme = theme;
     });
+  }
+
+  toggleSidebar() {
+    this.showSideBarOnMobile = !this.showSideBarOnMobile
   }
 
 }
