@@ -1,39 +1,66 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
+import { PokemonService } from 'src/app/core/service/pokemon.service';
 import { CardModule } from 'primeng/card';
+import { Card } from 'src/app/models/cards';
+import { SetPokemon } from 'src/app/models/sets';
+
+interface CardItem {
+  name: string;
+  description: string;
+  image: string;
+}
+
+interface CardsType {
+  title: string;
+  items: CardItem[];
+}
 
 @Component({
   selector: 'app-cards',
   standalone: true,
-  imports: [CardModule, CommonModule],
+  imports: [CardModule, CommonModule,],
   templateUrl: './cards.component.html',
   styleUrl: './cards.component.scss'
 })
-export class CardsComponent {
- cards = [
+  
+export class CardsComponent implements OnInit {
+  public cards: CardsType[] = [
     {
       title: 'Cards',
-      items: [
-        { name: 'Card 1', description: 'Descrição do card', image: '/placeholder.svg' },
-        { name: 'Card 2', description: 'Descrição do card', image: '/placeholder.svg' },
-        { name: 'Card 3', description: 'Descrição do card', image: '/placeholder.svg' }
-      ]
+      items: []
     },
     {
       title: 'Sets',
-      items: [
-        { name: 'Set 1', description: 'Descrição do set', image: '/placeholder.svg' },
-        { name: 'Set 2', description: 'Descrição do set', image: '/placeholder.svg' },
-        { name: 'Set 3', description: 'Descrição do set', image: '/placeholder.svg' }
-      ]
+      items: []
     },
     {
       title: 'Favoritos',
-      items: [
-        { name: 'Favorito 1', description: 'Descrição do favorito', image: '/placeholder.svg' },
-        { name: 'Favorito 2', description: 'Descrição do favorito', image: '/placeholder.svg' },
-        { name: 'Favorito 3', description: 'Descrição do favorito', image: '/placeholder.svg' }
-      ]
+      items: []
     }
   ];
+  private readonly episodesService = inject(PokemonService);
+  
+  ngOnInit(): void {
+    this.loadSetsAndCards();
+  }
+
+  loadSetsAndCards() {
+    this.episodesService.getSetsAndCards().subscribe(response => {
+      this.cards[0].items = response[0].cards.map((card: Card) => ({
+        name: card.name,
+        description: card.flavorText || 'Sem descrição',
+        image: card.images.small
+      }));
+
+      this.cards[1].items = response[0].sets.map((set: SetPokemon) => ({
+        name: set.name,
+        description: `Serie: ${set.series}`,
+        image: set.images.symbol
+      }));
+    });
+
+
+  }
+
 }
