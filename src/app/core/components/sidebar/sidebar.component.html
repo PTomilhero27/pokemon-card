@@ -8,7 +8,7 @@
     <button [ngClass]="{
         'button-dark': item.label === selectedButton,
         'button-light': item.label !== selectedButton
-      }" class="w-100 gap-3 rounded-2 {{ item.label }}" (click)="selectButton(item.label)">
+      }" class="w-100 gap-3 rounded-2 {{ item.label }}" (click)="selectButton(item.label, item.path)">
       <lucide-icon [size]="18" [name]="item.icon"></lucide-icon>
       <span>{{ item.label }}</span>
     </button>
