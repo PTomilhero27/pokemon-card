@@ -3,7 +3,7 @@
     <div class="card p-3 w-100" *ngFor="let card of cards">
       <header class="d-flex justify-content-between align-items-center">
         <p class="m-0 card-title">{{ card.title }}</p>
-        <span class="view-all">Ver tudo</span>
+        <span (click)="goToPokeCard(card.path)" class="cursor-pointer view-all">Ver tudo</span>
       </header>
       <main>
         <ng-container *ngIf="card.items.length > 0; else noItemsTemplate">
