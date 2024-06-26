@@ -1,0 +1,27 @@
+<div class="card h-100 cursor-pointer" (click)="selectCard()">
+  <div class="card-content d-flex flex-column flex-md-row align-items-center">
+    <img [src]="data.images.logo" alt="{{data.name}}" class="card-img">
+
+    <div class="card-body">
+      <div class="d-flex justify-content-between align-items-center">
+        <h5 class="card-title">{{data.name}}</h5>
+        <div class="d-flex align-items-center">
+          <span class="hp-text">Série:</span>
+          <strong>{{data.series}}</strong>
+        </div>
+      </div>
+
+      <div class="types mb-3">
+        <p-badge severity="contrast" [value]="'Total de Cartas: ' + data.total"></p-badge>
+        <p-badge severity="contrast" [value]="'Impressas: ' + data.printedTotal"></p-badge>
+      </div>
+
+      <div>
+        <div class="d-flex justify-content-between align-items-center">
+          <strong>Legalidade:</strong>
+          <strong>{{data.legalities.unlimited}}</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
