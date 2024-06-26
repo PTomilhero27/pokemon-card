@@ -31,7 +31,7 @@ export class SidebarComponent implements OnInit, AfterViewInit {
     { label: 'Home', path: 'home', icon: 'house' },
     { label: 'Cards', path: 'home/cards', icon: 'wallet-cards' },
     { label: 'Sets', path: 'home/sets', icon: 'layout-grid' },
-    { label: 'Favoritos', path: 'home/favoritos', icon: 'star' },
+    { label: 'Favoritos', path: 'home/favorites', icon: 'star' },
   ];
 
   constructor(private el: ElementRef, private router: Router) {}
@@ -71,6 +71,7 @@ export class SidebarComponent implements OnInit, AfterViewInit {
 
   selectButton(buttonLabel: string, path: string) {
     this.selectedButton = buttonLabel;
+    console.log(path);
     this.router.navigate([path]).then(() => {
       this.moveBackground(buttonLabel);
     });
@@ -106,10 +107,10 @@ export class SidebarComponent implements OnInit, AfterViewInit {
       this.selectButton('Cards', url);
     } else if (url.includes('home/sets' || url.includes('home/sets/review'))) {
       this.selectButton('Sets', url);
-    } else if (url.includes('home/favoritos')) {
-      this.selectButton('Favoritos', 'home/favoritos');
+    } else if (url.includes('home/favorites')) {
+      this.selectButton('Favoritos', url);
     } else if (url.includes('home')) {
-      this.selectButton('Home', 'home');
+      this.selectButton('Home', url);
     }
   }
 }

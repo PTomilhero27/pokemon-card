@@ -8,7 +8,7 @@ import { SetPokemon } from 'src/app/models/sets';
 import { SetService } from '../../../service/set.service';
 
 @Component({
-  selector: 'app-cards',
+  selector: 'app-set-cards',
   standalone: true,
   imports: [CommonModule, BadgeModule],
   templateUrl: './cards.component.html',

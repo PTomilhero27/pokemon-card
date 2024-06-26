@@ -11,7 +11,8 @@
           <span class="hp-text">hp</span>
           <div class="d-flex gap-4 align-items-center">
             <strong>{{card.hp}}</strong>
-            <lucide-icon (click)="toggleFavorite()" name="heart" [class.favorite]="isFavorite"></lucide-icon>
+            <lucide-icon *ngIf="isFavorite " (click)="toggleFavorite()" name="heart" color="green" class="cursor-pointer"></lucide-icon>
+            <lucide-icon *ngIf="!isFavorite" (click)="toggleFavorite()" name="heart" color="black" class="cursor-pointer"></lucide-icon>
           </div>
         </div>
       </div>

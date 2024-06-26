@@ -1,0 +1,14 @@
+<div>
+  <h2>Favoritos</h2>
+
+  <h3 *ngIf="favoriteCards.length > 0">Cards</h3>
+  <div class="mt-3" *ngFor="let card of favoriteCards">
+    <app-cards [data]="card"></app-cards>
+  </div>
+
+
+  <h3 *ngIf="favoriteSets.length > 0">Sets</h3>
+  <div class="mt-3" *ngFor="let set of favoriteSets">
+    <app-set-cards [data]="set"></app-set-cards>
+  </div>
+</div>

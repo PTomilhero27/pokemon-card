@@ -34,6 +34,7 @@ import { CustomXhrFactory } from 'src/custom-xhr.factory';
 import { XhrFactory } from '@angular/common';
 import { CardService } from './pages/home/pages/poke-card/service/card.service';
 import { SetService } from './pages/home/pages/poke-sets/service/set.service';
+import { FavoritesService } from './pages/home/pages/favorites/service/favorites.service';
 
 const myIcons = {
   [MyIcon.name]: MyIcon.data,
@@ -66,6 +67,7 @@ export const appConfig: ApplicationConfig = {
     CardService,
     ThemeService,
     SetService,
+    FavoritesService,
     {
       provide: LUCIDE_ICONS,
       multi: true,
