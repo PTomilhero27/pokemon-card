@@ -1,14 +1,26 @@
 <section class="d-flex w-100 flex-wrap">
   <div class="w-100 d-flex flex-wrap gap-4 card-container">
-    <div class="card p-3 w-100" *ngFor="let card of cards">
+    <div
+      [ngClass]="currentTheme === 'dark' ? 'shadow-light' : 'shadow-dark'"
+      class="card p-3 w-100"
+      *ngFor="let card of cards"
+    >
       <header class="d-flex justify-content-between align-items-center">
         <p class="m-0 card-title">{{ card.title }}</p>
-        <span (click)="goToPokeCard(card.path)" class="cursor-pointer view-all">Ver tudo</span>
+        <span (click)="goToPokeCard(card.path)" class="cursor-pointer view-all"
+          >Ver tudo</span
+        >
       </header>
       <main>
         <ng-container *ngIf="card.items.length > 0; else noItemsTemplate">
-          <div class="mt-4 p-0 gap-3 d-flex align-items-center item-card" *ngFor="let item of card.items">
-            <div class="photo-card" [ngStyle]="{'background-image': 'url(' + item.image + ')'}"></div>
+          <div
+            class="mt-4 p-0 gap-3 d-flex align-items-center item-card"
+            *ngFor="let item of card.items"
+          >
+            <div
+              class="photo-card"
+              [ngStyle]="{ 'background-image': 'url(' + item.image + ')' }"
+            ></div>
             <div class="card-content">
               <p class="card-subTitle m-0">{{ item.name }}</p>
               <span class="card-description">{{ item.description }}</span>

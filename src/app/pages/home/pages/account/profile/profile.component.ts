@@ -17,6 +17,7 @@ export class ProfileComponent implements OnInit {
     firstName: 'Pedro',
     lastName: 'Tomilhero',
     email: 'ptomilhero27@gmail.com',
+    phone: '5511941780315',
     jobTitle: 'Desenvolvedor FullStack',
     avatar: 'selfie.jpg',
     about: `<p>Sou um programador altamente motivado e versátil, tenho facilidade em aprender e me adaptar rapidamente a novas tecnologias, o que me permite enfrentar projetos desafiadores com confiança e eficiência. Ao longo da minha carreira, desenvolvi uma sólida experiência em Angular, partindo do zero e me tornando um programador experiente nessa tecnologia.</p>
@@ -24,10 +25,28 @@ export class ProfileComponent implements OnInit {
     <p>Meu entusiasmo por desafios me impulsiona a trabalhar de forma independente, encontrando soluções criativas e eficientes para problemas complexos. Resumindo, minha sólida experiência em Angular demonstra minha versatilidade como programador. Estou preparado para enfrentar novos desafios, adquirir novas habilidades e contribuir para o sucesso de projetos de programação estimulantes.</p>
     <p>Tecnologias:</p>
     <ul>
-      <li>Front-end: Angular, Rxjs, NgRx, JavaScript (Typescript, ES6+), CSS3 (SCSS, taiwind), Jasmine, PWAs, noções em UI/UX.</li>
-      <li>Back-end: Conhecimentos em Spring Boot, MySQL, MongoDB, Docker, REST, Clean-architecture, SOLID, DDD.</li>
-      <li>Devops: GitLab, Jenkins, Sonar Qube, Fortify, Azure, Aws.</li>
-    </ul>`,
+      <li>
+        <strong>Front-end (Intermediário/Avançado):</strong>
+        Angular, RxJS, NgRx, JavaScript (TypeScript), CSS3 (SCSS, Tailwind), React, React Native, Next.js, Vue.
+      </li>
+      <li>
+        <strong>Back-end (Iniciante/Intermediário):</strong>
+        Conhecimentos em Spring Boot, MySQL, Node.js, Nest.js, Prisma, REST, Clean Architecture, SOLID, DDD.
+      </li>
+      <li>
+        <strong>DevOps (Iniciante):</strong>
+        GitLab, Azure, AWS.
+      </li>
+      <li>
+        <strong>Design e UX/UI:</strong>
+        Figma.
+      </li>
+      <li>
+        <strong>Testes Unitários:</strong>
+        Experiência em testes unitários.
+      </li>
+    </ul>
+    `,
   };
 
   safeAboutContent!: SafeHtml;
@@ -38,5 +57,10 @@ export class ProfileComponent implements OnInit {
     this.safeAboutContent = this.sanitizer.bypassSecurityTrustHtml(
       this.user.about
     );
+  }
+
+  getWhatsAppLink(phoneNumber: string): string {
+    // Remova quaisquer caracteres indesejados
+    return phoneNumber.replace(/[^0-9]/g, '');
   }
 }

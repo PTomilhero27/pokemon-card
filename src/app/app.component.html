@@ -1,4 +1,6 @@
 <router-outlet></router-outlet>
-
-
+<p-progressSpinner
+  *ngIf="loading$ | async"
+  styleClass="custom-spinner"
+></p-progressSpinner>
 <p-toast position="bottom-right"></p-toast>

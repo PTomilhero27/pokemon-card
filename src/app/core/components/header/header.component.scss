@@ -1,11 +1,25 @@
 .navbar {
   position: fixed;
   top: 0;
-  left: 0;  
+  left: 0;
   right: 0;
   z-index: 1030;
   background-color: var(--background-color);
+  padding: 8px 20px 8px 270px;
+
+  @media (max-width: 576px) {
+    padding: 8px 20px 8px 40px;
+  }
+
+  @media (max-width: 400px) {
+    padding: 8px 10px 8px 10px;
+  }
 }
+
+.container {
+  max-width: 100%;
+}
+
 
 .header-content {
   width: 100%;

@@ -1,3 +1,4 @@
+import { ThemeService } from './../../../../../core/service/theme.service';
 import { SetService } from './../service/set.service';
 import { CommonModule } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
@@ -6,6 +7,7 @@ import { SetPokemon } from 'src/app/models/sets';
 import { FavoritesService } from '../../favorites/service/favorites.service';
 import { MessageService } from 'primeng/api';
 import { LucideAngularModule } from 'lucide-angular';
+import { DefaultTheme, ThemeProps } from 'src/app/models/theme';
 
 @Component({
   selector: 'app-set-review',
@@ -17,15 +19,22 @@ import { LucideAngularModule } from 'lucide-angular';
 export class SetReviewComponent implements OnInit {
   public setCard: SetPokemon | null = null;
   public isFavorite: boolean = false;
+  public currentTheme: ThemeProps = DefaultTheme;
+
   constructor(
     @Inject(SetService) private setService: SetService,
     private favoritesService: FavoritesService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private themeService: ThemeService
   ) {}
 
   ngOnInit(): void {
     this.setService.getSelectedSet().subscribe((card: SetPokemon | null) => {
       this.setCard = card;
+    });
+
+    this.themeService.theme$.subscribe((theme) => {
+      this.currentTheme = theme;
     });
 
     if (this.setCard) {
@@ -37,14 +46,14 @@ export class SetReviewComponent implements OnInit {
 
   toggleFavorite(): void {
     if (!this.setCard) return;
-    const detail: string = `Set ${
+    const detail: string = `Deck ${
       !this.isFavorite ? 'adicionado' : 'removido'
     } com sucesso`;
     if (this.isFavorite) {
       this.favoritesService.removeFavoriteSet(this.setCard.id);
     } else this.favoritesService.addFavoriteSet(this.setCard);
     this.messageService.add({
-      severity: this.isFavorite ? 'error' : 'success',
+      severity: 'success',
       detail,
     });
     this.isFavorite = !this.isFavorite;

@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 import { CardService } from '../../../../poke-card/service/card.service';
 import { SetPokemon } from 'src/app/models/sets';
 import { SetService } from '../../../service/set.service';
+import { ThemeService } from 'src/app/core/service/theme.service';
+import { DefaultTheme, ThemeProps } from 'src/app/models/theme';
 
 @Component({
   selector: 'app-set-cards',
@@ -16,13 +18,19 @@ import { SetService } from '../../../service/set.service';
 })
 export class CardsComponent {
   @Input() data!: SetPokemon;
+  public currentTheme: ThemeProps = DefaultTheme;
 
   constructor(
     private readonly setService: SetService,
-    private router: Router
+    private router: Router,
+    private themeService: ThemeService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.themeService.theme$.subscribe((theme) => {
+      this.currentTheme = theme;
+    });
+  }
 
   truncateText(text: string, maxLength: number): string {
     if (text.length > maxLength) {
