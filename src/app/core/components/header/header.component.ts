@@ -19,13 +19,12 @@ import { SidebarComponent } from '../sidebar/sidebar.component';
     MenuModule,
     LucideAngularModule,
     CommonModule,
-    SidebarComponent
+    SidebarComponent,
   ],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.scss'
+  styleUrl: './header.component.scss',
 })
 export class HeaderComponent implements OnInit {
-
   public items: MenuItem[] | undefined;
   public theme: MenuItem[] | undefined;
   public currentTheme: ThemeProps = DefaultTheme;
@@ -41,16 +40,15 @@ export class HeaderComponent implements OnInit {
           {
             label: 'Perfil',
             icon: 'pi pi-person',
-            command: () => this.router.navigate(['/profile'])
+            command: () => this.router.navigate(['/home/profile']),
           },
           {
             label: 'Sair',
             icon: 'pi pi-upload',
-            command: () => this.router.navigate(['/login'])
-              
-          }
-        ]
-      }
+            command: () => this.router.navigate(['/login']),
+          },
+        ],
+      },
     ];
 
     this.theme = [
@@ -62,26 +60,25 @@ export class HeaderComponent implements OnInit {
             icon: '',
             command: () => {
               this.themeService.setTheme('dark');
-            }
+            },
           },
           {
             label: 'Claro',
             icon: '',
             command: () => {
               this.themeService.setTheme('light');
-            }
-          }
-        ]
-      }
+            },
+          },
+        ],
+      },
     ];
 
-    this.themeService.theme$.subscribe(theme => {
+    this.themeService.theme$.subscribe((theme) => {
       this.currentTheme = theme;
     });
   }
 
   toggleSidebar() {
-    this.showSideBarOnMobile = !this.showSideBarOnMobile
+    this.showSideBarOnMobile = !this.showSideBarOnMobile;
   }
-
 }
