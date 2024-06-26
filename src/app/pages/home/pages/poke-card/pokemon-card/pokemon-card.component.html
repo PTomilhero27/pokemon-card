@@ -1,7 +1,10 @@
 <div class="container">
   <ng-container *ngIf="filteredPokemons.length > 0; else noPokemons">
     <div class="row">
-      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4 mb-4" *ngFor="let pokemon of filteredPokemons">
+      <div
+        class="col-sm-12 col-md-12 col-lg-6 col-xl-4 mb-4"
+        *ngFor="let pokemon of filteredPokemons"
+      >
         <app-cards [data]="pokemon"></app-cards>
       </div>
     </div>

@@ -1,25 +1,50 @@
 <div *ngIf="setCard; else notFound">
-  <div class="mt-5 card-detail">
+  <div
+    [ngClass]="currentTheme === 'dark' ? 'shadow-light' : 'shadow-dark'"
+    class="mt-5 card-detail"
+  >
     <div class="card-image">
-      <img [src]="setCard.images.logo" alt="{{ setCard.name }}" class="card-img">
+      <img
+        [src]="setCard.images.logo"
+        alt="{{ setCard.name }}"
+        class="card-img"
+      />
     </div>
 
     <div class="card-info">
       <div class="d-flex justify-content-between align-items-center">
-        <h2 class="card-title">{{setCard.name}}</h2>
+        <h2 class="card-title">{{ setCard.name }}</h2>
         <div class="d-flex align-items-center">
           <span class="hp-text">Série:</span>
           <div class="d-flex gap-4 align-items-center">
-            <strong>{{setCard.series}}</strong>
-            <lucide-icon *ngIf="isFavorite " (click)="toggleFavorite()" name="heart" color="green" class="cursor-pointer"></lucide-icon>
-            <lucide-icon *ngIf="!isFavorite" (click)="toggleFavorite()" name="heart" color="black" class="cursor-pointer"></lucide-icon>
+            <strong>{{ setCard.series }}</strong>
+            <lucide-icon
+              *ngIf="isFavorite"
+              (click)="toggleFavorite()"
+              name="heart"
+              color="green"
+              class="cursor-pointer"
+            ></lucide-icon>
+            <lucide-icon
+              *ngIf="!isFavorite"
+              (click)="toggleFavorite()"
+              name="heart"
+              color="black"
+              class="cursor-pointer"
+            ></lucide-icon>
           </div>
         </div>
       </div>
 
       <div class="types my-3">
-        <p-badge severity="contrast" [value]="'Total de Cartas: ' + setCard.total"></p-badge>
-        <p-badge severity="contrast" [value]="'Impressas: ' + setCard.printedTotal"></p-badge>
+        <p-badge
+          severity="contrast"
+          [value]="'Total de Cartas: ' + setCard.total"
+        ></p-badge>
+        <p-badge
+          severity="contrast"
+          [value]="'Impressas: ' + setCard.printedTotal"
+        ></p-badge>
       </div>
 
       <div class="d-flex justify-content-between align-items-center">
@@ -34,11 +59,17 @@
 
       <div class="d-flex justify-content-between align-items-center">
         <span>Legalidade:</span>
-        <strong class="cursor-pointer mb-3">{{ setCard.legalities.unlimited }}</strong>
+        <strong class="cursor-pointer mb-3">{{
+          setCard.legalities.unlimited
+        }}</strong>
       </div>
 
       <div class="d-flex justify-content-center mt-3">
-        <img [src]="setCard.images.symbol" alt="{{ setCard.name }} Symbol" class="card-symbol">
+        <img
+          [src]="setCard.images.symbol"
+          alt="{{ setCard.name }} Symbol"
+          class="card-symbol"
+        />
       </div>
     </div>
   </div>

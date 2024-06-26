@@ -17,3 +17,63 @@
 p {
   margin: 0;
 }
+
+
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+
+  @media (max-width: 576px) {
+    margin: 30px;
+  }
+
+  .card {
+    flex: 1 1 235px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    background-color: var(--card-background);
+    color: var(--card-text);
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+
+    @media (min-width: 768px) {
+      flex: 1 1 48%;
+    }
+
+    @media (min-width: 1200px) {
+      flex: 1 1 30%;
+    }
+  }
+
+  .card-title {
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  .card-subTitle {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--card-text);
+  }
+
+  .card-description {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--card-subtitle);
+  }
+
+  .card-content {
+    line-height: 18px;
+    width: 90%;
+  }
+}
+
+.custom-spinner {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+}
+
