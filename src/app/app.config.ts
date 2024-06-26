@@ -3,7 +3,7 @@ import { provideServerRendering } from '@angular/platform-server';
 import { PreloadAllModules, provideRouter, withComponentInputBinding, withPreloading, withViewTransitions } from '@angular/router';
 import { routes } from './app.routes';
 import { MessageService } from 'primeng/api';
-import { House, LUCIDE_ICONS, LayoutGrid, LucideAngularModule, LucideIconProvider, Menu, Moon, Star, Sun, WalletCards } from 'lucide-angular';
+import { Heart, House, LUCIDE_ICONS, LayoutGrid, LucideAngularModule, LucideIconProvider, Menu, Moon, Star, Sun, WalletCards } from 'lucide-angular';
 import { MyIcon } from './utils/my-icon';
 import { ThemeService } from './core/service/theme.service';
 import { HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient } from '@angular/common/http';
@@ -27,7 +27,7 @@ export const appConfig: ApplicationConfig = {
     ),
     importProvidersFrom(
       HttpClientModule,
-      LucideAngularModule.pick({Sun, Moon, WalletCards, Star, LayoutGrid, Menu, House})
+      LucideAngularModule.pick({Sun, Moon, WalletCards, Star, LayoutGrid, Menu, House, Heart})
     ),
     MessageService,
     CardService,

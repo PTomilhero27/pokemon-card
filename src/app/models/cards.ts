@@ -1,4 +1,4 @@
-import { SetPokemon } from "./sets";
+import { SetPokemon } from './sets';
 
 interface Ability {
   name: string;
@@ -82,6 +82,7 @@ export interface Card {
   abilities: Ability[];
   attacks: Attack[];
   weaknesses: Weakness[];
+  resistances: Weakness[];
   retreatCost: string[];
   convertedRetreatCost: number;
   set: SetPokemon;
@@ -103,5 +104,3 @@ export interface CardData {
   count: number;
   totalCount: number;
 }
-
-
