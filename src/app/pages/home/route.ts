@@ -9,6 +9,7 @@ import { PokemonSetComponent } from './pages/poke-sets/pokemon-set/pokemon-set.c
 import { SetReviewComponent } from './pages/poke-sets/set-review/set-review.component';
 import { FavoritesComponent } from './pages/favorites/favorites.component';
 import { PokemonFavoritesComponent } from './pages/favorites/pokemon-favorites/pokemon-favorites.component';
+import { ProfileComponent } from './pages/account/profile/profile.component';
 
 export const HomeRoutes: Route[] = [
   {
@@ -38,6 +39,10 @@ export const HomeRoutes: Route[] = [
         children: [
           { path: '', loadComponent: () => PokemonFavoritesComponent },
         ],
+      },
+      {
+        path: 'profile',
+        loadComponent: () => ProfileComponent,
       },
     ],
   },

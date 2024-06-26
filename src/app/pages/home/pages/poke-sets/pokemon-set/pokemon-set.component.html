@@ -1,8 +1,15 @@
 <div class="container">
-  <div class="row">
-    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4 mb-4" *ngFor="let pokemon of pokemons">
-      <app-set-cards [data]="pokemon"></app-set-cards>
+  <ng-container *ngIf="filteredSets.length > 0; else noSets">
+    <div class="row">
+      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4 mb-4" *ngFor="let set of filteredSets">
+        <app-set-cards [data]="set"></app-set-cards>
+      </div>
     </div>
-  </div>
+  </ng-container>
+  <ng-template #noSets>
+    <div class="no-sets">
+      <p>Não há sets de Pokémon correspondentes à sua pesquisa.</p>
+    </div>
+  </ng-template>
+  <div id="scroll-sentinel"></div>
 </div>
-<div id="scroll-sentinel"></div>

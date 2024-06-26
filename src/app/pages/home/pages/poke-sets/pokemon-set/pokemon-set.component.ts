@@ -1,36 +1,49 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, OnDestroy, inject } from '@angular/core';
 import { PokemonService } from 'src/app/core/service/pokemon.service';
 import { SetPokemon } from 'src/app/models/sets';
 import { CardsComponent } from './components/cards/cards.component';
+import { Subscription } from 'rxjs';
+import { SearchService } from 'src/app/core/components/search-bar/service/search.service';
 
 @Component({
   selector: 'app-pokemon-set',
   standalone: true,
   imports: [CommonModule, CardsComponent],
   templateUrl: './pokemon-set.component.html',
-  styleUrl: './pokemon-set.component.scss',
+  styleUrls: ['./pokemon-set.component.scss'],
 })
-export class PokemonSetComponent implements OnInit {
+export class PokemonSetComponent implements OnInit, OnDestroy {
   private readonly pokemonService = inject(PokemonService);
-  public pokemons: SetPokemon[] = [];
+  private readonly searchService = inject(SearchService);
+  public sets: SetPokemon[] = [];
+  public filteredSets: SetPokemon[] = [];
   private page: number = 1;
   private pageSize: number = 35;
   private loading: boolean = false;
+  private searchSubscription!: Subscription;
 
   ngOnInit() {
-    this.loadMorePokemons();
+    this.loadMoreSets();
     this.setupIntersectionObserver();
+    this.subscribeToSearch();
   }
 
-  loadMorePokemons() {
+  ngOnDestroy() {
+    if (this.searchSubscription) {
+      this.searchSubscription.unsubscribe();
+    }
+  }
+
+  loadMoreSets() {
     if (this.loading) return;
     this.loading = true;
     this.pokemonService.getSets(this.page, this.pageSize).subscribe((data) => {
-      console.log(data);
-      this.pokemons = [...this.pokemons, ...data];
+      this.sets = [...this.sets, ...data];
+      this.filteredSets = this.sets;
       this.page++;
       this.loading = false;
+      this.filterSets(this.searchService.getSearchTerm());
     });
   }
 
@@ -44,7 +57,7 @@ export class PokemonSetComponent implements OnInit {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          this.loadMorePokemons();
+          this.loadMoreSets();
         }
       });
     }, options);
@@ -52,6 +65,25 @@ export class PokemonSetComponent implements OnInit {
     const sentinel = document.querySelector('#scroll-sentinel');
     if (sentinel) {
       observer.observe(sentinel);
+    }
+  }
+
+  subscribeToSearch() {
+    this.searchSubscription = this.searchService.searchTerm$.subscribe(
+      (term) => {
+        this.filterSets(term);
+      }
+    );
+  }
+
+  filterSets(term: string) {
+    if (!term) {
+      this.filteredSets = this.sets;
+    } else {
+      const lowerCaseTerm = term.toLowerCase();
+      this.filteredSets = this.sets.filter((set) =>
+        set.name.toLowerCase().includes(lowerCaseTerm)
+      );
     }
   }
 }
