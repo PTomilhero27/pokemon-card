@@ -3,59 +3,13 @@
   height: 40px;
   border-radius: 8px;
   background-color: rgb(210, 209, 209);
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, .1);
   background-size: cover;
   background-position: center;
 }
 
-.card-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-
-  @media (max-width: 576px) {
-    margin: 30px;
-  }
-
-  .card {
-    flex: 1 1 235px; 
-    margin-bottom: 20px;
-    box-sizing: border-box;
-
-    @media (min-width: 768px) {
-      flex: 1 1 48%;
-    }
-
-    @media (min-width: 1200px) {
-      flex: 1 1 30%;
-    }
-  }
-
-  .card-title {
-    font-size: 20px; 
-    font-weight: 600;
-  }
-
-  .card-subTitle {
-    font-size: 16px;
-    font-weight: 600;
-  }
-
-  .card-description {
-    font-size: 14px;
-    font-weight: 400;
-    color: #71717A;
-  }
-
-  .card-content {
-    line-height: 18px;
-    width: 90%;
-  }
-}
-
 .no-items-message {
   font-size: 16px;
-  color: #71717A;
+  color: var(--card-subtitle);
   text-align: center;
   margin-top: 10px;
 }

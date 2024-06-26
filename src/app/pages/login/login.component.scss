@@ -1,3 +1,22 @@
 .min-vh-100 {
   min-height: 100vh;
 }
+
+.card {
+  margin-top: 20px;
+}
+
+@media (max-width: 576px) {
+  .px-3 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .mb-4 {
+    margin-bottom: 1.5rem;
+  }
+
+  .mb-md-0 {
+    margin-bottom: 0;
+  }
+}

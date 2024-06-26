@@ -1,13 +1,25 @@
-<section class="account-page">
+<section>
   <div class="container">
-    <p-card header="{{user.firstName}} {{user.lastName}}" subheader="{{user.jobTitle}}">
+    <p-card
+      header="{{ user.firstName }} {{ user.lastName }}"
+      subheader="{{ user.jobTitle }}"
+    >
       <div class="user-info">
-
         <div class="user-details">
-          <div class="content-group">
+          <div class="content-group d-flex align-items-center gap-3">
             <h3>E-mail:</h3>
             <a [attr.href]="'mailto:' + user.email">
               <p>{{ user.email }}</p>
+            </a>
+          </div>
+
+          <div class="content-group d-flex align-items-center gap-3">
+            <h3>Telefone:</h3>
+            <a
+              [attr.href]="'https://wa.me/' + getWhatsAppLink(user.phone)"
+              target="_blank"
+            >
+              <p>{{ user.phone }}</p>
             </a>
           </div>
 
@@ -18,15 +30,36 @@
 
           <div class="d-flex align-items-center">
             <p-avatar
-            image="https://avatars.githubusercontent.com/u/70902978?v=4"
+              image="https://avatars.githubusercontent.com/u/70902978?v=4"
               shape="circle"
               size="xlarge"
             ></p-avatar>
-            <a href="https://www.linkedin.com/in/pedro-tomilhero-2696981b5/" target="_blank" rel="noopener noreferrer">
-              <button pButton type="button" label="LinkedIn" icon="pi pi-linkedin" class="p-button-outlined p-button-primary"></button>
+            <a
+              href="https://www.linkedin.com/in/pedro-tomilhero-2696981b5/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <button
+                pButton
+                type="button"
+                label="LinkedIn"
+                class="p-button-outlined p-button-primary"
+              ></button>
+            </a>
+
+            <a
+              href="https://github.com/PTomilhero27"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <button
+                pButton
+                type="button"
+                label="Git hub"
+                class="p-button-outlined p-button-primary"
+              ></button>
             </a>
           </div>
-
         </div>
       </div>
     </p-card>

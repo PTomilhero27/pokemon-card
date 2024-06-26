@@ -6,6 +6,8 @@ import { Card } from 'src/app/models/cards';
 import { SetPokemon } from 'src/app/models/sets';
 import { Router } from '@angular/router';
 import { FavoritesService } from '../../pages/favorites/service/favorites.service';
+import { ThemeService } from 'src/app/core/service/theme.service';
+import { DefaultTheme, ThemeProps } from 'src/app/models/theme';
 
 interface CardItem {
   name: string;
@@ -44,9 +46,12 @@ export class CardsComponent implements OnInit {
       items: [],
     },
   ];
+  public currentTheme: ThemeProps = DefaultTheme;
+
   private readonly pokemonService = inject(PokemonService);
   private readonly router = inject(Router);
   private readonly favoritesService = inject(FavoritesService);
+  private readonly themeService = inject(ThemeService);
 
   public goToPokeCard = (path: string) =>
     this.router.navigate([`home/${path}`]);
@@ -90,6 +95,8 @@ export class CardsComponent implements OnInit {
       this.cards[2].items = [...favoriteCards, ...favoriteSets];
     });
 
-    console.log(this.cards);
+    this.themeService.theme$.subscribe((theme) => {
+      this.currentTheme = theme;
+    });
   }
 }

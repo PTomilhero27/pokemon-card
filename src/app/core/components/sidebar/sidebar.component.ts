@@ -21,7 +21,7 @@ import { filter } from 'rxjs/operators';
   styleUrls: ['./sidebar.component.scss'],
 })
 export class SidebarComponent implements OnInit, AfterViewInit {
-  @Input() currentTheme: string = '';
+  @Input() currentTheme: string = 'light-theme';
   @Input() showSideBarOnMobile: boolean = false;
   public selectedButton: string = '';
   public windowWidth: number = window.innerWidth;
@@ -45,7 +45,6 @@ export class SidebarComponent implements OnInit, AfterViewInit {
         this.updateSelectedButtonBasedOnRoute(event.urlAfterRedirects);
       });
 
-    // Check the initial route on component load
     this.updateSelectedButtonBasedOnRoute(this.router.url);
   }
 
@@ -71,7 +70,6 @@ export class SidebarComponent implements OnInit, AfterViewInit {
 
   selectButton(buttonLabel: string, path: string) {
     this.selectedButton = buttonLabel;
-    console.log(path);
     this.router.navigate([path]).then(() => {
       this.moveBackground(buttonLabel);
     });

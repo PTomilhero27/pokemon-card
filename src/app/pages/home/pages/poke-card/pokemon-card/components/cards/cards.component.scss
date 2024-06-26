@@ -1,16 +1,18 @@
-// Cards styles
+
 .card {
   height: 100%;
   cursor: pointer;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-color: #fff;
-  border: 1px solid #ddd;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s;
   overflow: hidden;
+
+  background-color: var(--card-background);
+  color: var(--card-text);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
 
   &:hover {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
