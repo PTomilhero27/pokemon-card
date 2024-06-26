@@ -1,37 +1,33 @@
 <div class="card h-100 cursor-pointer" (click)="selectCard()">
-  <div class="d-flex">
-
+  <div class="card-content d-flex flex-column flex-md-row ">
     <img [src]="data.images.small" alt="{{data.name}}" class="card-img">
 
     <div class="card-body">
-      <div  class="d-flex justify-content-between">
+      <div class="d-flex justify-content-between align-items-center">
         <h5 class="card-title">{{data.name}}</h5>
-        <div>
+        <div class="d-flex align-items-center">
           <span class="hp-text">hp</span>
           <strong>{{data.hp}}</strong>
         </div>
       </div>
+
       <div class="types mb-3">
-        <p-badge *ngFor="let type of data.types" severity="contrast" [value]="type" />
+        <p-badge *ngFor="let type of data.types" severity="contrast" [value]="type"></p-badge>
       </div>
+
       <div>
         <div *ngFor="let attack of data.attacks">
-          <div class="d-flex justify-content-between ">
-            <strong >{{attack.name}}</strong>
-            <strong >{{attack.damage}}</strong>
+          <div class="d-flex justify-content-between align-items-center">
+            <strong>{{attack.name}}</strong>
+            <strong>{{attack.damage}}</strong>
           </div>
           <span class="card-description">{{truncateText(attack.text, 70)}}</span>
         </div>
-        <div class="d-flex justify-content-between">
-          <strong>
-            Raridade:
-          </strong>
-          <strong>
-            {{data.rarity}}
-          </strong>
+        <div class="d-flex justify-content-between align-items-center">
+          <strong>Raridade:</strong>
+          <strong>{{data.rarity}}</strong>
         </div>
       </div>
     </div>
-
   </div>
 </div>

@@ -3,7 +3,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { Card } from 'src/app/models/cards';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CardService {
   private selectedCardSubject = new BehaviorSubject<Card | null>(null);

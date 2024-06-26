@@ -1,1 +1,71 @@
-<p>review works!</p>
+<div *ngIf="card; else notFound">
+  <div class="mt-5 card-detail">
+    <div class="card-image">
+      <img [src]="card.images.large" alt="{{ card.name }}">
+    </div>
+
+    <div class="card-info">
+      <div class="d-flex justify-content-between align-items-center">
+        <h2 class="card-title">{{card.name}}</h2>
+        <div class="d-flex align-items-center">
+          <span class="hp-text">hp</span>
+          <div class="d-flex gap-4 align-items-center">
+            <strong>{{card.hp}}</strong>
+            <lucide-icon (click)="toggleFavorite()" name="heart" [class.favorite]="isFavorite"></lucide-icon>
+          </div>
+        </div>
+      </div>
+
+      <div class="types my-3">
+        <p-badge *ngFor="let type of card.types" severity="contrast" [value]="type"></p-badge>
+      </div>
+
+      <div class="d-flex justify-content-between align-items-center">
+        <span>Set</span>
+        <strong class="cursor-pointer mb-3">{{ card.set.name }}</strong>
+      </div>
+
+      <div *ngIf="card.abilities && card.abilities.length > 0" class="mb-3">
+        <div class="d-flex justify-content-between align-items-center">
+          <h3>Habilidades</h3>
+          <p-badge severity="success" [value]="card.abilities[0].name"></p-badge>
+        </div>
+        <p>{{ card.abilities[0].text }}</p>
+      </div>
+
+      <div *ngIf="card.flavorText" class="mb-3">
+        <h3>Habilidade Especial:</h3>
+        <p>{{ card.flavorText }}</p>
+      </div>
+
+      <div class="mb-3">
+        <h3>Ataques</h3>
+        <ul>
+          <li *ngFor="let attack of card?.attacks">
+            <strong>{{ attack.name }}:</strong> {{ attack.damage }} - {{ attack.text }}
+          </li>
+        </ul>
+      </div>
+
+      <h3>Informações Adicionais</h3>
+      <p *ngIf="card.tcgplayer.prices.normal"><strong>Preço (Normal):</strong> ${{ card.tcgplayer.prices.normal.market }}</p>
+      <p *ngIf="card.tcgplayer.prices.reverseHolofoil"><strong>Preço (Reverse Holofoil):</strong> ${{ card.tcgplayer.prices.reverseHolofoil.market }}</p>
+
+      <div class="my-3">
+        <h5>fraquezas</h5>
+        <p-badge *ngFor="let type of card.weaknesses" severity="danger" [value]="type.type + ' - ' + type.value"></p-badge>
+      </div>
+
+      <div class="my-3">
+        <h5>resistências</h5>
+        <p-badge *ngFor="let type of card.resistances" severity="success" [value]="type.type + ' - ' + type.value"></p-badge>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #notFound>
+  <div class="not-found">
+    <p>Card não foi encontrado. Tente novamente.</p>
+  </div>
+</ng-template>

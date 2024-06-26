@@ -2,8 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { BadgeModule } from 'primeng/badge';
 import { Card } from 'src/app/models/cards';
-import { CardService } from '../../../service/card.service';
 import { Router } from '@angular/router';
+import { CardService } from '../../../service/card.service';
 
 @Component({
   selector: 'app-cards',
@@ -15,7 +15,8 @@ import { Router } from '@angular/router';
 export class CardsComponent {
   @Input() data!: Card;
 
-  constructor(private cardService: CardService, private router: Router) {}
+
+  constructor(private readonly cardService: CardService, private router: Router) {}
 
   ngOnInit(): void {
   }
