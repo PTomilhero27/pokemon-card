@@ -1,0 +1,47 @@
+<div *ngIf="card; else notFound">
+  <div class="mt-5 card-detail">
+    <div class="card-image">
+      <img [src]="card.images.logo" alt="{{ card.name }}" class="card-img">
+    </div>
+
+    <div class="card-info">
+      <div class="d-flex justify-content-between align-items-center">
+        <h2 class="card-title">{{card.name}}</h2>
+        <div class="d-flex align-items-center">
+          <span class="hp-text">Série:</span>
+          <strong>{{card.series}}</strong>
+        </div>
+      </div>
+
+      <div class="types my-3">
+        <p-badge severity="contrast" [value]="'Total de Cartas: ' + card.total"></p-badge>
+        <p-badge severity="contrast" [value]="'Impressas: ' + card.printedTotal"></p-badge>
+      </div>
+
+      <div class="d-flex justify-content-between align-items-center">
+        <span>Data de Lançamento:</span>
+        <strong class="cursor-pointer mb-3">{{ card.releaseDate }}</strong>
+      </div>
+
+      <div class="d-flex justify-content-between align-items-center">
+        <span>Atualizado em:</span>
+        <strong class="cursor-pointer mb-3">{{ card.updatedAt }}</strong>
+      </div>
+
+      <div class="d-flex justify-content-between align-items-center">
+        <span>Legalidade:</span>
+        <strong class="cursor-pointer mb-3">{{ card.legalities.unlimited }}</strong>
+      </div>
+
+      <div class="d-flex justify-content-center mt-3">
+        <img [src]="card.images.symbol" alt="{{ card.name }} Symbol" class="card-symbol">
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #notFound>
+  <div class="not-found">
+    <p>Card não foi encontrado. Tente novamente.</p>
+  </div>
+</ng-template>
