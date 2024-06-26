@@ -1,20 +1,19 @@
-import { Component, OnInit, inject } from '@angular/core';
-import { PokemonCardComponent } from './pokemon-card/pokemon-card.component';
 import { CommonModule } from '@angular/common';
+import { Component, OnInit, inject } from '@angular/core';
 import { PokemonService } from 'src/app/core/service/pokemon.service';
-import { Card } from 'src/app/models/cards';
-import { RouterOutlet } from '@angular/router';
+import { SetPokemon } from 'src/app/models/sets';
+import { CardsComponent } from './components/cards/cards.component';
 
 @Component({
-  selector: 'app-poke-card',
+  selector: 'app-pokemon-set',
   standalone: true,
-  imports: [PokemonCardComponent, CommonModule, RouterOutlet],
-  templateUrl: './poke-card.component.html',
-  styleUrl: './poke-card.component.scss',
+  imports: [CommonModule, CardsComponent],
+  templateUrl: './pokemon-set.component.html',
+  styleUrl: './pokemon-set.component.scss',
 })
-export class PokeCardComponent implements OnInit {
+export class PokemonSetComponent implements OnInit {
   private readonly pokemonService = inject(PokemonService);
-  public pokemons: Card[] = [];
+  public pokemons: SetPokemon[] = [];
   private page: number = 1;
   private pageSize: number = 35;
   private loading: boolean = false;
@@ -27,7 +26,8 @@ export class PokeCardComponent implements OnInit {
   loadMorePokemons() {
     if (this.loading) return;
     this.loading = true;
-    this.pokemonService.getCards(this.page, this.pageSize).subscribe((data) => {
+    this.pokemonService.getSets(this.page, this.pageSize).subscribe((data) => {
+      console.log(data);
       this.pokemons = [...this.pokemons, ...data];
       this.page++;
       this.loading = false;

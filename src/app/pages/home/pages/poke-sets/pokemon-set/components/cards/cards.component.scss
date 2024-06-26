@@ -28,22 +28,20 @@
     display: flex;
     flex-direction: column;
 
-    @media (min-width: 768px) {
+    @media (max-width: 950px) {
       flex-direction: row;
     }
   }
 
   .card-img {
     width: 100%;
-    max-width: 100px; /* Ajuste o tamanho máximo conforme necessário */
+    max-width: 150px;
     height: auto;
     margin-bottom: 10px;
-    object-fit: contain;
     border-radius: 8px 8px 0 0;
 
     @media (min-width: 768px) {
       border-radius: 8px 0 0 8px;
-      max-width: 150px; /* Ajuste o tamanho máximo conforme necessário para telas maiores */
     }
   }
 
@@ -91,18 +89,5 @@
       text-overflow: ellipsis;
       margin: 0;
     }
-
-    .card-symbol {
-      width: 50px;
-      height: auto;
-      object-fit: contain; /* Garantir que a imagem se ajuste sem distorção */
-    }
-  }
-}
-
-@media (min-width: 1110px) {
-  .col-xl-4 {
-    flex: 0 0 50%;
-    max-width: 50%;
   }
 }
